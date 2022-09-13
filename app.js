@@ -21,12 +21,19 @@ function setTableRec(data){
     let str = "";
 
     for(let i = offset; i < offset+row; i++){
+        if (i >= arr.length) {
+            str += "<td>" + "no more data can be fetched" + "</td>";
+            str +="</tr>"
+            break;
+        }
+      
         str  += "<tr>"
         str += "<td>" + data[i].flight_number + ": " + data[i].name + " " + "(" + data[i].date_local.substr(0, 4) + ")" +  "</td>" 
         str +="</tr>"
         str  += "<tr>"
         str += "<td>" + "Details: " + data[i].details + "</td>";
         str +="</tr>"
+    
     }
     document.getElementById("spaceRec").insertAdjacentHTML("beforeend", str);
     
